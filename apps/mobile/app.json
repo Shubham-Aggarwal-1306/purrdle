@@ -1,0 +1,29 @@
+{
+  "expo": {
+    "name": "Purrdle",
+    "slug": "purrdle",
+    "scheme": "purrdle",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.purrdle.app"
+    },
+    "android": {
+      "package": "com.purrdle.app",
+      "adaptiveIcon": {
+        "backgroundColor": "#FFF6EC",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": true
+    },
+    "plugins": ["expo-router"],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}
