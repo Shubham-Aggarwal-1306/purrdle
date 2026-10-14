@@ -1,0 +1,605 @@
+{
+  "version": 1,
+  "levels": [
+    {
+      "id": "lvl-001",
+      "order": 1,
+      "word": "whiskers",
+      "acceptedVariants": ["whisker"],
+      "hints": [
+        "Cats have about two dozen of these.",
+        "They help a cat judge whether it can fit through a gap.",
+        "They are packed with nerves and sense tiny air currents.",
+        "They grow on the muzzle and above the eyes.",
+        "Long, stiff hairs sticking out from a cat's face."
+      ],
+      "explanation": "Whiskers are thick, deeply rooted hairs packed with nerve endings. Cats use them to sense nearby objects and air movement, and to gauge whether an opening is wide enough to squeeze through.",
+      "image": {
+        "uri": "placeholder:peach",
+        "credit": "Placeholder art by Purrdle",
+        "license": "Own work"
+      },
+      "difficulty": 1
+    },
+    {
+      "id": "lvl-002",
+      "order": 2,
+      "word": "purr",
+      "acceptedVariants": ["purrs"],
+      "hints": [
+        "You feel it as much as you hear it.",
+        "It often happens on a warm lap.",
+        "Cats do it when content, and sometimes when stressed or hurt.",
+        "A low, rumbling vibration from the throat.",
+        "The motor-like sound a happy cat makes."
+      ],
+      "explanation": "Purring is made by rapid twitching of the muscles around a cat's voice box. It usually signals contentment, but cats also purr when anxious or unwell, possibly to soothe themselves.",
+      "image": {
+        "uri": "placeholder:lavender",
+        "credit": "Placeholder art by Purrdle",
+        "license": "Own work"
+      },
+      "difficulty": 1
+    },
+    {
+      "id": "lvl-003",
+      "order": 3,
+      "word": "kitten",
+      "acceptedVariants": ["kittens"],
+      "hints": [
+        "Everyone starts out as one.",
+        "Its eyes stay shut for about the first week.",
+        "Many have blue eyes that change color later.",
+        "Usually under a year old.",
+        "A baby cat."
+      ],
+      "explanation": "Kittens are born with their eyes closed and open them at around one to two weeks old. Most start with blue eyes, which often change to their adult color over the following months.",
+      "image": {
+        "uri": "placeholder:mint",
+        "credit": "Placeholder art by Purrdle",
+        "license": "Own work"
+      },
+      "difficulty": 1
+    },
+    {
+      "id": "lvl-004",
+      "order": 4,
+      "word": "catnip",
+      "acceptedVariants": ["catmint"],
+      "hints": [
+        "It belongs to the mint family.",
+        "Some cats ignore it completely.",
+        "Its oil, nepetalactone, triggers a short burst of excitement.",
+        "Often stuffed inside cat toys.",
+        "The herb that makes many cats roll around in bliss."
+      ],
+      "explanation": "Catnip is a herb whose oil, nepetalactone, sets off rolling, rubbing and playful behavior in many cats. The response is inherited, so a good share of cats are not affected at all.",
+      "image": {
+        "uri": "placeholder:cream",
+        "credit": "Placeholder art by Purrdle",
+        "license": "Own work"
+      },
+      "difficulty": 1
+    },
+    {
+      "id": "lvl-005",
+      "order": 5,
+      "word": "meow",
+      "acceptedVariants": ["miaow", "meows"],
+      "hints": [
+        "It is a form of communication.",
+        "Adult cats rarely use it with each other.",
+        "They mostly save it for talking to people.",
+        "It can mean hello, feed me, or let me out.",
+        "The classic sound a cat makes."
+      ],
+      "explanation": "Adult cats seldom meow at other cats; the sound is mostly aimed at humans. Each cat develops its own range of meows to ask for food, attention or an open door.",
+      "image": {
+        "uri": "placeholder:sky",
+        "credit": "Placeholder art by Purrdle",
+        "license": "Own work"
+      },
+      "difficulty": 1
+    },
+    {
+      "id": "lvl-006",
+      "order": 6,
+      "word": "collar",
+      "acceptedVariants": ["collars"],
+      "hints": [
+        "Many pets wear one.",
+        "It can carry a name tag or a tiny bell.",
+        "Safer versions snap open if they get caught on something.",
+        "It goes around the neck.",
+        "A band a pet wears around its neck."
+      ],
+      "explanation": "Collars can hold ID tags or a bell. For cats, breakaway collars are recommended because they release under pressure if they snag on a branch or fence.",
+      "image": {
+        "uri": "placeholder:rose",
+        "credit": "Placeholder art by Purrdle",
+        "license": "Own work"
+      },
+      "difficulty": 1
+    },
+    {
+      "id": "lvl-007",
+      "order": 7,
+      "word": "tail",
+      "acceptedVariants": ["tails"],
+      "hints": [
+        "It says a lot about mood.",
+        "Held high, it means a friendly hello.",
+        "Puffed up, it means fright.",
+        "It helps with balance on narrow ledges.",
+        "The long part at a cat's rear end."
+      ],
+      "explanation": "A cat's tail helps it balance while climbing and walking along narrow surfaces. It is also a mood signal: upright for a friendly greeting, puffed out when scared.",
+      "image": {
+        "uri": "placeholder:peach",
+        "credit": "Placeholder art by Purrdle",
+        "license": "Own work"
+      },
+      "difficulty": 1
+    },
+    {
+      "id": "lvl-008",
+      "order": 8,
+      "word": "tabby",
+      "acceptedVariants": ["tabbies"],
+      "hints": [
+        "It is a pattern, not a breed.",
+        "It comes in mackerel, classic, spotted and ticked styles.",
+        "Stripes, swirls or spots on the coat.",
+        "Look for an M-shaped marking on the forehead.",
+        "A striped cat, often orange or gray."
+      ],
+      "explanation": "Tabby describes a coat pattern found in many breeds and mixed cats. Most tabbies share a distinctive M-shaped marking on the forehead.",
+      "image": {
+        "uri": "placeholder:lavender",
+        "credit": "Placeholder art by Purrdle",
+        "license": "Own work"
+      },
+      "difficulty": 2
+    },
+    {
+      "id": "lvl-009",
+      "order": 9,
+      "word": "hairball",
+      "acceptedVariants": ["hairballs", "fur ball"],
+      "hints": [
+        "A side effect of being very tidy.",
+        "It forms in the stomach.",
+        "It comes from swallowing loose fur while grooming.",
+        "Long-haired cats get them more often.",
+        "A wad of fur a cat coughs up."
+      ],
+      "explanation": "When cats groom, their rough tongues catch loose fur, which they swallow. Most passes through, but some can clump in the stomach and come back up as a hairball.",
+      "image": {
+        "uri": "placeholder:mint",
+        "credit": "Placeholder art by Purrdle",
+        "license": "Own work"
+      },
+      "difficulty": 2
+    },
+    {
+      "id": "lvl-010",
+      "order": 10,
+      "word": "calico",
+      "acceptedVariants": ["calicos", "calicoes"],
+      "hints": [
+        "A colorful coat.",
+        "Three colors appear together.",
+        "White with patches of orange and black.",
+        "Almost all of them are female, thanks to genetics.",
+        "A tricolor patched cat."
+      ],
+      "explanation": "Calico cats have white coats with patches of orange and black. Because the orange and black color genes sit on the X chromosome, nearly all calicos are female.",
+      "image": {
+        "uri": "placeholder:cream",
+        "credit": "Placeholder art by Purrdle",
+        "license": "Own work"
+      },
+      "difficulty": 2
+    },
+    {
+      "id": "lvl-011",
+      "order": 11,
+      "word": "pounce",
+      "acceptedVariants": ["pounces"],
+      "hints": [
+        "It ends a hunt.",
+        "It often starts with a wiggle of the hips.",
+        "Timing and a burst of speed matter.",
+        "A sudden leap onto prey or a toy.",
+        "To spring forward and grab something."
+      ],
+      "explanation": "Before pouncing, cats crouch and often wiggle their hindquarters to get their footing. Then they spring forward in one quick burst to catch prey or a toy.",
+      "image": {
+        "uri": "placeholder:sky",
+        "credit": "Placeholder art by Purrdle",
+        "license": "Own work"
+      },
+      "difficulty": 2
+    },
+    {
+      "id": "lvl-012",
+      "order": 12,
+      "word": "litter box",
+      "acceptedVariants": ["litter tray"],
+      "hints": [
+        "Every indoor cat needs access to one.",
+        "Cats instinctively bury what they leave here.",
+        "A common rule is one per cat, plus one extra.",
+        "It is filled with clay, clumping or pellet material.",
+        "The indoor cat toilet."
+      ],
+      "explanation": "Cats naturally bury their waste, which makes a box of loose material easy for them to use. Keeping it clean and in a quiet spot helps avoid accidents elsewhere.",
+      "image": {
+        "uri": "placeholder:rose",
+        "credit": "Placeholder art by Purrdle",
+        "license": "Own work"
+      },
+      "difficulty": 2
+    },
+    {
+      "id": "lvl-013",
+      "order": 13,
+      "word": "kibble",
+      "acceptedVariants": ["kibbles"],
+      "hints": [
+        "It comes in a bag.",
+        "It is made by cooking dough under pressure.",
+        "It stays fresh longer than wet food.",
+        "Small crunchy pieces in a bowl.",
+        "Dry pet food."
+      ],
+      "explanation": "Kibble is dry pet food formed by cooking and shaping a dough under pressure. Because cats are strict carnivores, good cat food includes nutrients such as taurine that they cannot make for themselves.",
+      "image": {
+        "uri": "placeholder:peach",
+        "credit": "Placeholder art by Purrdle",
+        "license": "Own work"
+      },
+      "difficulty": 2
+    },
+    {
+      "id": "lvl-014",
+      "order": 14,
+      "word": "feline",
+      "acceptedVariants": ["felines"],
+      "hints": [
+        "A fancy word.",
+        "It comes from Latin.",
+        "It describes a whole family, from house pets to tigers.",
+        "Used as both a noun and an adjective.",
+        "Another word for cat."
+      ],
+      "explanation": "Feline comes from the Latin word for cat and refers to the cat family, Felidae. It covers everything from house cats to lions and tigers.",
+      "image": {
+        "uri": "placeholder:lavender",
+        "credit": "Placeholder art by Purrdle",
+        "license": "Own work"
+      },
+      "difficulty": 2
+    },
+    {
+      "id": "lvl-015",
+      "order": 15,
+      "word": "lion",
+      "acceptedVariants": ["lions"],
+      "hints": [
+        "It lives in Africa, with a small population in India.",
+        "It is the only truly social wild cat.",
+        "It lives in a group called a pride.",
+        "The males have a big shaggy mane.",
+        "The king of the jungle."
+      ],
+      "explanation": "Lions are the only wild cats that live in social groups, called prides. A roar can be heard from several miles away.",
+      "image": {
+        "uri": "placeholder:mint",
+        "credit": "Placeholder art by Purrdle",
+        "license": "Own work"
+      },
+      "difficulty": 2
+    },
+    {
+      "id": "lvl-016",
+      "order": 16,
+      "word": "grooming",
+      "acceptedVariants": ["groom"],
+      "hints": [
+        "A daily routine.",
+        "Cats spend a large part of their waking hours on it.",
+        "Their tongues have tiny backward-facing hooks for it.",
+        "It keeps fur clean and untangled.",
+        "Licking and cleaning the coat."
+      ],
+      "explanation": "Cats spend a big chunk of each day keeping their coats clean. Their tongues are covered in tiny hooked spines that work like a comb to pull out dirt and loose fur.",
+      "image": {
+        "uri": "placeholder:cream",
+        "credit": "Placeholder art by Purrdle",
+        "license": "Own work"
+      },
+      "difficulty": 2
+    },
+    {
+      "id": "lvl-017",
+      "order": 17,
+      "word": "claw",
+      "acceptedVariants": ["claws"],
+      "hints": [
+        "Sharp and curved.",
+        "House cats keep them tucked away when relaxed.",
+        "They need regular scratching to stay in shape.",
+        "There is one at the tip of each toe.",
+        "What a cat uses to scratch."
+      ],
+      "explanation": "Domestic cats can retract their claws, keeping them sharp by tucking them away while walking. Scratching sheds the worn outer layer and reveals a fresh, sharp one beneath.",
+      "image": {
+        "uri": "placeholder:sky",
+        "credit": "Placeholder art by Purrdle",
+        "license": "Own work"
+      },
+      "difficulty": 2
+    },
+    {
+      "id": "lvl-018",
+      "order": 18,
+      "word": "siamese",
+      "acceptedVariants": ["siamese cat"],
+      "hints": [
+        "An old breed from Southeast Asia.",
+        "Known for being very talkative.",
+        "Its color depends on body temperature.",
+        "Darker ears, face, paws and tail with blue eyes.",
+        "A cream cat with dark points, named after the old name for Thailand."
+      ],
+      "explanation": "Siamese cats come from Thailand, once called Siam. Their darker points form because a pigment enzyme works only in cooler parts of the body, such as the ears, paws and tail.",
+      "image": {
+        "uri": "placeholder:rose",
+        "credit": "Placeholder art by Purrdle",
+        "license": "Own work"
+      },
+      "difficulty": 3
+    },
+    {
+      "id": "lvl-019",
+      "order": 19,
+      "word": "scratching post",
+      "acceptedVariants": ["scratch post", "scratching posts"],
+      "hints": [
+        "A piece of furniture.",
+        "It saves your sofa.",
+        "Often wrapped in sisal rope.",
+        "Cats use it to sharpen claws and stretch.",
+        "A tall pole covered in rough material for clawing."
+      ],
+      "explanation": "Scratching lets cats stretch, keep their claws healthy and leave scent from glands in their paws. A sturdy post gives them a better target than furniture.",
+      "image": {
+        "uri": "placeholder:peach",
+        "credit": "Placeholder art by Purrdle",
+        "license": "Own work"
+      },
+      "difficulty": 3
+    },
+    {
+      "id": "lvl-020",
+      "order": 20,
+      "word": "tuxedo",
+      "acceptedVariants": ["tuxedo cat", "tuxedos"],
+      "hints": [
+        "It has a formal look.",
+        "A color pattern, not a breed.",
+        "Mostly black with white chest and paws.",
+        "It looks like it is dressed for a fancy dinner.",
+        "A black-and-white cat named after a suit."
+      ],
+      "explanation": "Tuxedo cats are black and white bicolors whose markings resemble a formal suit. The pattern appears in many breeds and mixed cats.",
+      "image": {
+        "uri": "placeholder:lavender",
+        "credit": "Placeholder art by Purrdle",
+        "license": "Own work"
+      },
+      "difficulty": 3
+    },
+    {
+      "id": "lvl-021",
+      "order": 21,
+      "word": "kneading",
+      "acceptedVariants": ["knead", "making biscuits"],
+      "hints": [
+        "A rhythmic movement.",
+        "It starts in kittenhood, while nursing.",
+        "Often done on soft blankets or laps.",
+        "Paws push in and out, one after the other.",
+        "Also known as making biscuits."
+      ],
+      "explanation": "Kittens do this to their mother to help milk flow, and many cats keep the habit as adults. It usually signals comfort and contentment.",
+      "image": {
+        "uri": "placeholder:mint",
+        "credit": "Placeholder art by Purrdle",
+        "license": "Own work"
+      },
+      "difficulty": 3
+    },
+    {
+      "id": "lvl-022",
+      "order": 22,
+      "word": "nine lives",
+      "acceptedVariants": ["9 lives"],
+      "hints": [
+        "A saying, not a fact.",
+        "The number changes from country to country.",
+        "It comes from how often cats escape danger.",
+        "Cats seem to land on their feet.",
+        "How many chances a cat supposedly gets."
+      ],
+      "explanation": "The saying comes from cats' agility and their knack for surviving falls by twisting to land feet first. In some Spanish-speaking countries, cats are said to have seven instead.",
+      "image": {
+        "uri": "placeholder:cream",
+        "credit": "Placeholder art by Purrdle",
+        "license": "Own work"
+      },
+      "difficulty": 3
+    },
+    {
+      "id": "lvl-023",
+      "order": 23,
+      "word": "cheetah",
+      "acceptedVariants": ["cheetahs"],
+      "hints": [
+        "A big cat that cannot roar.",
+        "It chirps, and it purrs.",
+        "Its claws never fully retract, giving extra grip.",
+        "Black tear lines run down its face.",
+        "The fastest animal on land."
+      ],
+      "explanation": "Cheetahs can sprint at around 60 to 70 miles per hour in short bursts. Their claws stay partly out, working like running spikes.",
+      "image": {
+        "uri": "placeholder:sky",
+        "credit": "Placeholder art by Purrdle",
+        "license": "Own work"
+      },
+      "difficulty": 3
+    },
+    {
+      "id": "lvl-024",
+      "order": 24,
+      "word": "maine coon",
+      "acceptedVariants": ["maine coons"],
+      "hints": [
+        "A gentle giant.",
+        "One of the largest domestic breeds.",
+        "It has tufted ears and a thick, water-resistant coat.",
+        "It is the official state cat of a New England state.",
+        "A huge, fluffy American breed with a bushy tail."
+      ],
+      "explanation": "Maine Coons are among the largest domestic cats, known for their friendly nature. Their shaggy, water-resistant coats and bushy tails suit cold winters.",
+      "image": {
+        "uri": "placeholder:rose",
+        "credit": "Placeholder art by Purrdle",
+        "license": "Own work"
+      },
+      "difficulty": 3
+    },
+    {
+      "id": "lvl-025",
+      "order": 25,
+      "word": "zoomies",
+      "acceptedVariants": ["zoomie", "the zoomies"],
+      "hints": [
+        "It happens suddenly.",
+        "Often at night, or after a trip to the litter box.",
+        "A burst of pent-up energy.",
+        "Racing around the house for no clear reason.",
+        "A cat's sudden wild sprinting fit."
+      ],
+      "explanation": "These are sudden bursts of frantic running and leaping, sometimes called frenetic random activity periods. They are a normal way for cats to burn off energy.",
+      "image": {
+        "uri": "placeholder:peach",
+        "credit": "Placeholder art by Purrdle",
+        "license": "Own work"
+      },
+      "difficulty": 3
+    },
+    {
+      "id": "lvl-026",
+      "order": 26,
+      "word": "persian",
+      "acceptedVariants": ["persians", "persian cat"],
+      "hints": [
+        "One of the oldest known breeds.",
+        "Famous for a calm, quiet personality.",
+        "It needs daily brushing.",
+        "A long, flowing coat and a flat face.",
+        "A fluffy breed named after the old name for Iran."
+      ],
+      "explanation": "Persian cats have long, thick coats that need daily grooming. They are known for being calm and are among the most popular breeds worldwide.",
+      "image": {
+        "uri": "placeholder:lavender",
+        "credit": "Placeholder art by Purrdle",
+        "license": "Own work"
+      },
+      "difficulty": 3
+    },
+    {
+      "id": "lvl-027",
+      "order": 27,
+      "word": "lynx",
+      "acceptedVariants": ["lynxes"],
+      "hints": [
+        "A wild cat of northern forests.",
+        "Its paws act like snowshoes.",
+        "It has a short, stubby tail.",
+        "Black tufts stick up from its ears.",
+        "A wild cat famous for its ear tufts."
+      ],
+      "explanation": "These cats have big furry paws that help them walk on deep snow. The Canada species depends heavily on snowshoe hares for food.",
+      "image": {
+        "uri": "placeholder:mint",
+        "credit": "Placeholder art by Purrdle",
+        "license": "Own work"
+      },
+      "difficulty": 4
+    },
+    {
+      "id": "lvl-028",
+      "order": 28,
+      "word": "sphynx",
+      "acceptedVariants": ["sphinx", "sphynxes"],
+      "hints": [
+        "It loves warm spots.",
+        "The breed started in Canada in the 1960s.",
+        "It needs regular baths for its skin.",
+        "It looks bald but is covered in fine down.",
+        "The hairless cat breed."
+      ],
+      "explanation": "The breed began with a natural hairless mutation in Canada in the 1960s. Without fur to absorb skin oils, these cats need regular baths.",
+      "image": {
+        "uri": "placeholder:cream",
+        "credit": "Placeholder art by Purrdle",
+        "license": "Own work"
+      },
+      "difficulty": 4
+    },
+    {
+      "id": "lvl-029",
+      "order": 29,
+      "word": "bengal",
+      "acceptedVariants": ["bengals", "bengal cat"],
+      "hints": [
+        "A breed with a wild look.",
+        "Its ancestors include the Asian leopard cat.",
+        "Many of them enjoy playing in water.",
+        "Its coat has spots or marbling like a leopard's.",
+        "A spotted breed that shares its name with a tiger."
+      ],
+      "explanation": "Bengal cats were developed by crossing domestic cats with the Asian leopard cat. They are known for their spotted or marbled coats and high energy.",
+      "image": {
+        "uri": "placeholder:sky",
+        "credit": "Placeholder art by Purrdle",
+        "license": "Own work"
+      },
+      "difficulty": 4
+    },
+    {
+      "id": "lvl-030",
+      "order": 30,
+      "word": "slow blink",
+      "acceptedVariants": ["slow blinking", "slow blinks"],
+      "hints": [
+        "A quiet signal.",
+        "Some call it a cat kiss.",
+        "You can do it back to say you are friendly.",
+        "The eyes half-close, pause, then gently open again.",
+        "A cat's lazy, trusting wink."
+      ],
+      "explanation": "This gesture is a sign that a cat feels relaxed and trusts you. Studies have found that cats are more likely to approach people who do it back.",
+      "image": {
+        "uri": "placeholder:rose",
+        "credit": "Placeholder art by Purrdle",
+        "license": "Own work"
+      },
+      "difficulty": 4
+    }
+  ]
+}
