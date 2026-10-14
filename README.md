@@ -34,7 +34,7 @@ See [CLAUDE.md](./CLAUDE.md) for architecture and conventions.
 0. Scaffold ✅
 1. Core logic — level schema, answer matching, game state machine ✅
 2. Gameplay UI — theme, screens, bundled levels, MMKV persistence, haptics/sound ✅
-3. Public API + AI judge — `/judge` (mock + Jev stub), Upstash rate limiting/cache, App Check
+3. Public API + AI judge — `/judge` (mock + Jev stub), Upstash rate limiting/cache ✅ (App Check moves to Phase 5 with Firebase)
 4. Ads + consent — UMP (incl. US state privacy messages), AdManager caps, rewarded/interstitial/banner (test IDs)
 5. Firebase — analytics, crashlytics, remote config
 6. Android release prep — EAS profiles, targetSdk 36, compliance docs

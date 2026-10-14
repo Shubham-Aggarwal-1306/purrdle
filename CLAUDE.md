@@ -12,7 +12,7 @@ packages/shared  Pure TS: level schema (zod), answer matching, game state machin
 docs/            architecture.md (decisions log), compliance.md, privacy policy, app-ads.txt
 ```
 
-Phase plan: README.md → "Roadmap" (current: **Phase 2 done**). Decisions (region, vendors, budget): `docs/architecture.md` — read it before infra work and append to its log when a decision changes. Budget is **near-free**: prefer free tiers and scale-to-zero.
+Phase plan: README.md → "Roadmap" (current: **Phase 3 done**). Decisions (region, vendors, budget): `docs/architecture.md` — read it before infra work and append to its log when a decision changes. Budget is **near-free**: prefer free tiers and scale-to-zero.
 
 ## `packages/shared` map (Phase 1)
 
@@ -47,7 +47,32 @@ assets/                fonts (Fredoka, OFL), sounds + placeholder level art (scr
 - Level images: `placeholder:<key>` → bundled art; `https://…` → remote. Every level shows `credit · license`.
 - Reanimated: use `sv.get()` / `sv.set()` (not `.value`) — the React Compiler lint rule forbids mutating `.value`.
 - Native permissions are pinned in `app.json` (`android.permissions: []` + `blockedPermissions`). expo-audio's plugin is configured with no microphone/background audio. Re-check the merged manifest whenever a native dep is added.
+- AI judge: `features/judge/client.ts` posts to `${EXPO_PUBLIC_API_URL}/judge` with a random per-install
+  `X-Installation-Id` (MMKV). Judging is state-driven: whenever a level is in `judging`, `useLevelGame`
+  requests a verdict (also resuming one interrupted by an app restart). No API URL → judge disabled →
+  borderline guesses count as wrong.
 - Typed routes are off (they need generated files from `expo start`, which CI doesn't run).
+
+## `apps/api` map (Phase 3)
+
+```
+src/server.ts        public entry: loadConfig → createPublicDeps → buildPublicApp → listen
+src/app.ts           buildPublicApp(deps): /health + POST /judge only (admin routes never registered here)
+src/deps.ts          wires config → store (Upstash | memory), judge (mock | jev), limiter, rules
+src/config.ts        zod-validated env; fails fast (production requires Upstash)
+src/routes/judge.ts  attest → x-installation-id → body (zod, strict) → rate limit → JudgeService
+src/judge/           AnswerJudge interface, MockJudge, JevJudge (stub — TODO(jev)), JudgeService
+src/store/           KeyValueStore: MemoryStore (dev/tests), UpstashStore (REST via fetch, no SDK)
+src/security/        RateLimiter (fixed windows per device + per IP), RequestAttestor (App Check TODO phase 5)
+```
+
+- `JudgeService.decide`: shared `matchAnswer` first (correct/wrong never reach the AI) → shared cache keyed by
+  normalized answer forms + guess (rejections cached too) → daily budget counter → judge with timeout →
+  accept only `sameWord && confidence ≥ threshold`. Store/budget failures fail **closed** (503).
+- Responses: 200 `{accepted, source: rules|cache|judge}`, 400 bad input/missing installation id, 401
+  attestation, 413 body > 4 KB, 429 + `Retry-After`, 503 unavailable. The app treats anything but
+  `accepted: true` as a wrong guess (4 s client timeout).
+- Jest maps `@purrdle/shared` to its TS source (its `dist` is ESM). Coverage gate: 95/90/90/95.
 
 ## Commands (run from repo root)
 

@@ -21,6 +21,8 @@ Living record of product/infra decisions. Items marked _(tentative)_ belong to l
 | 2026-10-14 | Phase order: ship the player app first; generation backend + admin app come after release prep.                                                                               |
 | 2026-10-14 | Fredoka is bundled as TTF files (no font package). Placeholder art/sounds are generated in-repo (own work).                                                                   |
 | 2026-10-14 | A failed level can be retried from scratch (fresh guesses/hints); the rewarded extra guess is offered first (Phase 4). Solved levels open on their result screen (no replay). |
+| 2026-10-14 | Level packs are served as static files from object storage + CDN, not by the API (Phase 3 drops the level-pack endpoint).                                                     |
+| 2026-10-14 | `/judge` cost controls: rules first, global cache (30 days), daily AI-call budget (default 2000), per-device 30/h and per-IP 120/min limits; Upstash via REST (no SDK).       |
 | 2026-10-14 | Answer matching: answers of **≤3 letters must be exact** (no typo/near-miss leniency); 4–6 letters allow 1 typo, longer allow 2.                                              |
 
 ## Components
