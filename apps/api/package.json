@@ -9,10 +9,11 @@
     "dev": "tsc -p tsconfig.build.json && (tsc -p tsconfig.build.json --watch --preserveWatchOutput & node --watch --env-file-if-exists=.env dist/server.js)",
     "start": "node --env-file-if-exists=.env dist/server.js",
     "typecheck": "tsc --noEmit",
-    "test": "jest"
+    "test": "jest --coverage --coverageReporters=text-summary"
   },
   "dependencies": {
     "@purrdle/shared": "workspace:*",
-    "fastify": "^5.12.5"
+    "fastify": "^5.12.5",
+    "zod": "^4.6.7"
   }
 }
