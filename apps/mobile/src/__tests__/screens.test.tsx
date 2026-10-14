@@ -1,4 +1,4 @@
-import { act, fireEvent, render, screen } from '@testing-library/react-native';
+import { act, fireEvent, render, screen, waitFor } from '@testing-library/react-native';
 import { createLevelProgress, type LevelProgress } from '@purrdle/shared';
 
 import { playHaptic } from '@/features/feedback/haptics';
@@ -110,6 +110,59 @@ describe('LevelScreen', () => {
     } finally {
       jest.useRealTimers();
     }
+  });
+});
+
+describe('LevelScreen with the AI judge', () => {
+  const original = process.env.EXPO_PUBLIC_API_URL;
+  const realFetch = globalThis.fetch;
+  beforeEach(() => {
+    process.env.EXPO_PUBLIC_API_URL = 'https://api.test';
+  });
+  afterEach(() => {
+    process.env.EXPO_PUBLIC_API_URL = original;
+    globalThis.fetch = realFetch;
+  });
+
+  const mockJudge = (accepted: boolean) => {
+    globalThis.fetch = jest.fn(() =>
+      Promise.resolve(new Response(JSON.stringify({ accepted, source: 'judge' }))),
+    ) as unknown as typeof fetch;
+  };
+
+  // "wskrs" is 3 edits from "whiskers": borderline, so it goes to the judge.
+  it('wins when the judge accepts a borderline guess', async () => {
+    mockJudge(true);
+    await render(<LevelScreen level={level} levelNumber={1} />);
+    await guess('wskrs');
+    await waitFor(() => {
+      expect(useProgressStore.getState().levels[level.id]?.status).toBe('won');
+    });
+    expect(globalThis.fetch).toHaveBeenCalledTimes(1);
+    expect(useProgressStore.getState().levels[level.id]?.guesses).toEqual([
+      { text: 'wskrs', outcome: 'judge' },
+    ]);
+  });
+
+  it('counts a rejected borderline guess as wrong', async () => {
+    mockJudge(false);
+    await render(<LevelScreen level={level} levelNumber={1} />);
+    await guess('wskrs');
+    expect(await screen.findByLabelText('2 guesses left')).toBeOnTheScreen();
+    expect(screen.getByText(level.hints[1])).toBeOnTheScreen();
+  });
+
+  it('resumes a judgement left pending by an app restart', async () => {
+    mockJudge(true);
+    useProgressStore.setState({
+      levels: {
+        [level.id]: { ...createLevelProgress(level.id), status: 'judging', pendingGuess: 'wskrs' },
+      },
+    });
+    await render(<LevelScreen level={level} levelNumber={1} />);
+    await waitFor(() => {
+      expect(useProgressStore.getState().levels[level.id]?.status).toBe('won');
+    });
   });
 });
 
