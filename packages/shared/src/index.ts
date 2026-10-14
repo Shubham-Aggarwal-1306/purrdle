@@ -10,3 +10,15 @@ export {
   type MatchResult,
   type MatchTarget,
 } from './matching/match.ts';
+
+export * from './game/state.ts';
+export * from './game/selectors.ts';
+export * from './game/scoring.ts';
+export {
+  transition,
+  type GameContext,
+  type GameEffect,
+  type GameEvent,
+  type RejectReason,
+  type Transition,
+} from './game/machine.ts';
