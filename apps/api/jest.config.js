@@ -2,6 +2,10 @@
 export default {
   testEnvironment: 'node',
   roots: ['<rootDir>/src'],
+  collectCoverageFrom: ['src/**/*.ts', '!src/**/*.test.ts', '!src/server.ts'],
+  coverageThreshold: { global: { statements: 95, branches: 90, functions: 90, lines: 95 } },
+  // Test against shared's TypeScript source (its dist is ESM, which CJS Jest can't require).
+  moduleNameMapper: { '^@purrdle/shared$': '<rootDir>/../../packages/shared/src/index.ts' },
   transform: {
     '^.+\\.ts$': [
       'ts-jest',
