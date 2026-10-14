@@ -32,7 +32,7 @@ See [CLAUDE.md](./CLAUDE.md) for architecture and conventions.
 ## Roadmap
 
 0. Scaffold ✅
-1. Core logic — level schema, answer matching, game state machine
+1. Core logic — level schema, answer matching, game state machine ✅
 2. Gameplay UI — theme, screens, bundled levels, MMKV persistence, haptics/sound
 3. Public API + AI judge — `/judge` (mock + Jev stub), Upstash rate limiting/cache, App Check
 4. Ads + consent — UMP (incl. US state privacy messages), AdManager caps, rewarded/interstitial/banner (test IDs)

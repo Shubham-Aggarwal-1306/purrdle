@@ -12,7 +12,22 @@ packages/shared  Pure TS: level schema (zod), answer matching, game state machin
 docs/            architecture.md (decisions log), compliance.md, privacy policy, app-ads.txt
 ```
 
-Phase plan: README.md → "Roadmap". Decisions (region, vendors, budget): `docs/architecture.md` — read it before infra work and append to its log when a decision changes. Budget is **near-free**: prefer free tiers and scale-to-zero.
+Phase plan: README.md → "Roadmap" (current: **Phase 1 done**). Decisions (region, vendors, budget): `docs/architecture.md` — read it before infra work and append to its log when a decision changes. Budget is **near-free**: prefer free tiers and scale-to-zero.
+
+## `packages/shared` map (Phase 1)
+
+| Module                            | What                                                                                                                              |
+| --------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| `level/schema.ts`                 | zod `LevelSchema` / `LevelPackSchema`, `parseLevelPack()` (validates untrusted pack JSON, sorts by order)                         |
+| `matching/normalize.ts`           | `normalizeGuess()` / `compactForm()` — the one place text is normalized                                                           |
+| `matching/damerau-levenshtein.ts` | Unrestricted Damerau–Levenshtein on code points                                                                                   |
+| `matching/morphology.ts`          | Inflection heuristic (purring ~ purr) used only to flag `borderline`                                                              |
+| `matching/match.ts`               | `matchAnswer()` → `invalid` / `correct` (exact or typo) / `borderline` / `wrong`; numeric `MatchOptions` (Remote Config-friendly) |
+| `game/state.ts`                   | `LevelProgress` (persisted JSON), `parseLevelProgress()` for restoring from MMKV                                                  |
+| `game/machine.ts`                 | `transition(state, event, ctx) → { state, effect }`; effects drive haptics/sound/analytics/judge/ads                              |
+| `game/selectors.ts`, `scoring.ts` | Derived values (guesses left, visible hints, can-reveal, can-grant-extra) and paw stars                                           |
+
+Rules: the state machine never performs I/O. A `needsJudge` effect means the app calls `/judge` and then dispatches `judgeResolved` (dispatch `accepted: false` on timeout/error). Invalid, repeated or out-of-state events return the **same state object** with a `rejected` effect. Bump `PROGRESS_SCHEMA_VERSION` (and migrate or discard) when changing `LevelProgress`. Coverage gate for shared: 95% statements/lines/functions, 90% branches.
 
 ## Commands (run from repo root)
 
