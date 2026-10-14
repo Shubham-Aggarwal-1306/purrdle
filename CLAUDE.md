@@ -12,7 +12,7 @@ packages/shared  Pure TS: level schema (zod), answer matching, game state machin
 docs/            architecture.md (decisions log), compliance.md, privacy policy, app-ads.txt
 ```
 
-Phase plan: README.md → "Roadmap" (current: **Phase 1 done**). Decisions (region, vendors, budget): `docs/architecture.md` — read it before infra work and append to its log when a decision changes. Budget is **near-free**: prefer free tiers and scale-to-zero.
+Phase plan: README.md → "Roadmap" (current: **Phase 2 done**). Decisions (region, vendors, budget): `docs/architecture.md` — read it before infra work and append to its log when a decision changes. Budget is **near-free**: prefer free tiers and scale-to-zero.
 
 ## `packages/shared` map (Phase 1)
 
@@ -28,6 +28,26 @@ Phase plan: README.md → "Roadmap" (current: **Phase 1 done**). Decisions (regi
 | `game/selectors.ts`, `scoring.ts` | Derived values (guesses left, visible hints, can-reveal, can-grant-extra) and paw stars                                           |
 
 Rules: the state machine never performs I/O. A `needsJudge` effect means the app calls `/judge` and then dispatches `judgeResolved` (dispatch `accepted: false` on timeout/error). Invalid, repeated or out-of-state events return the **same state object** with a `rejected` effect. Bump `PROGRESS_SCHEMA_VERSION` (and migrate or discard) when changing `LevelProgress`. Coverage gate for shared: 95% statements/lines/functions, 90% branches.
+
+## `apps/mobile` map (Phase 2)
+
+```
+src/app/               routes only (thin): _layout (fonts + splash), index, levels, level/[id], result/[id], settings
+src/features/<area>/   screens + logic: home, level-map, game (LevelScreen, useLevelGame, mascotMood, messages),
+                       result, settings (screen + store), progress (store + selectors), levels (bundled pack,
+                       repository, images), feedback (pure effect→haptic/sound mapping + device wrappers)
+src/components/        presentational only (props in, callbacks out) — no stores, no router
+src/theme/tokens.ts    the only place for colors, spacing, radii, fonts, typography
+src/lib/storage.ts     MMKV instance + zustand persist adapter
+assets/                fonts (Fredoka, OFL), sounds + placeholder level art (scripts/generate-placeholder-assets.mjs)
+```
+
+- Persisted stores: `progress` (per-level `LevelProgress`, validated with `parseLevelProgress` on rehydrate) and `settings` (sound, haptics). MMKV is synchronous, so state is ready before first render.
+- Level flow: `useLevelGame` dispatches to the shared machine via the progress store, then plays feedback for the returned effect. Route files validate params and redirect (locked/unknown level → `/levels`, unsolved result → level).
+- Level images: `placeholder:<key>` → bundled art; `https://…` → remote. Every level shows `credit · license`.
+- Reanimated: use `sv.get()` / `sv.set()` (not `.value`) — the React Compiler lint rule forbids mutating `.value`.
+- Native permissions are pinned in `app.json` (`android.permissions: []` + `blockedPermissions`). expo-audio's plugin is configured with no microphone/background audio. Re-check the merged manifest whenever a native dep is added.
+- Typed routes are off (they need generated files from `expo start`, which CI doesn't run).
 
 ## Commands (run from repo root)
 
@@ -60,7 +80,7 @@ Add mobile native deps with `npx expo install <pkg>` from `apps/mobile` (picks S
 ## Testing
 
 - `packages/shared`, `apps/api`: Jest 30 + ts-jest (`*.test.ts` next to source). API tests use `app.inject()`, no network.
-- `apps/mobile`: `jest-expo` preset + React Native Testing Library 14 (async `render`), tests in `src/__tests__/`.
+- `apps/mobile`: `jest-expo` preset + React Native Testing Library 14 (async `render` **and** async `fireEvent` — always `await`), tests in `src/__tests__/`, helpers in `src/test-utils/`. `jest.setup.ts` mocks MMKV (in-memory), sound and haptics; `react-native-worklets/jest/resolver.js` loads worklets' JS implementation. `levels-data.test.ts` validates the bundled pack (schema, no hint leaks the answer, 2–4 sentence explanations, image credit).
 
 ## Versions (verified 2026-10)
 

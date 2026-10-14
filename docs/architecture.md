@@ -4,22 +4,24 @@ Living record of product/infra decisions. Items marked _(tentative)_ belong to l
 
 ## Decisions log
 
-| Date       | Decision                                                                                                                         |
-| ---------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| 2026-10-08 | Name **Purrdle** is the business name; keep it. Revisit only if a trademark complaint arrives.                                   |
-| 2026-10-08 | Android application ID / iOS bundle ID: `com.purrdle.app` (permanent after first Play upload).                                   |
-| 2026-10-14 | No accounts in v1. Progress is device-local (MMKV); lost on reinstall unless Android backup restores it.                         |
-| 2026-10-14 | Font: **Fredoka**.                                                                                                               |
-| 2026-10-14 | One monorepo, three apps: `mobile` (players), `admin` (content generation), `api` (judge + generation).                          |
-| 2026-10-14 | Free app, ad-monetized; no paid UA for now → no MMP (AppsFlyer/Adjust); Firebase Analytics only.                                 |
-| 2026-10-14 | Early players mostly India; ad revenue focus US. Host in **US (`us-central1`)**; latency only affects `/judge`.                  |
-| 2026-10-14 | Spelling: levels use **US English**; UK / Indian English spellings go in `acceptedVariants`.                                     |
-| 2026-10-14 | Redis: **Upstash** (serverless, same region as API).                                                                             |
-| 2026-10-14 | Admin app: **Vite + React + TypeScript SPA**.                                                                                    |
-| 2026-10-14 | Text generation model: **Claude via OpenRouter**. Jev is used only for typed decisions (judge, quality checks).                  |
-| 2026-10-14 | Budget: **as close to free as possible** — prefer free tiers and scale-to-zero everywhere.                                       |
-| 2026-10-14 | Phase order: ship the player app first; generation backend + admin app come after release prep.                                  |
-| 2026-10-14 | Answer matching: answers of **≤3 letters must be exact** (no typo/near-miss leniency); 4–6 letters allow 1 typo, longer allow 2. |
+| Date       | Decision                                                                                                                                                                      |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 2026-10-08 | Name **Purrdle** is the business name; keep it. Revisit only if a trademark complaint arrives.                                                                                |
+| 2026-10-08 | Android application ID / iOS bundle ID: `com.purrdle.app` (permanent after first Play upload).                                                                                |
+| 2026-10-14 | No accounts in v1. Progress is device-local (MMKV); lost on reinstall unless Android backup restores it.                                                                      |
+| 2026-10-14 | Font: **Fredoka**.                                                                                                                                                            |
+| 2026-10-14 | One monorepo, three apps: `mobile` (players), `admin` (content generation), `api` (judge + generation).                                                                       |
+| 2026-10-14 | Free app, ad-monetized; no paid UA for now → no MMP (AppsFlyer/Adjust); Firebase Analytics only.                                                                              |
+| 2026-10-14 | Early players mostly India; ad revenue focus US. Host in **US (`us-central1`)**; latency only affects `/judge`.                                                               |
+| 2026-10-14 | Spelling: levels use **US English**; UK / Indian English spellings go in `acceptedVariants`.                                                                                  |
+| 2026-10-14 | Redis: **Upstash** (serverless, same region as API).                                                                                                                          |
+| 2026-10-14 | Admin app: **Vite + React + TypeScript SPA**.                                                                                                                                 |
+| 2026-10-14 | Text generation model: **Claude via OpenRouter**. Jev is used only for typed decisions (judge, quality checks).                                                               |
+| 2026-10-14 | Budget: **as close to free as possible** — prefer free tiers and scale-to-zero everywhere.                                                                                    |
+| 2026-10-14 | Phase order: ship the player app first; generation backend + admin app come after release prep.                                                                               |
+| 2026-10-14 | Fredoka is bundled as TTF files (no font package). Placeholder art/sounds are generated in-repo (own work).                                                                   |
+| 2026-10-14 | A failed level can be retried from scratch (fresh guesses/hints); the rewarded extra guess is offered first (Phase 4). Solved levels open on their result screen (no replay). |
+| 2026-10-14 | Answer matching: answers of **≤3 letters must be exact** (no typo/near-miss leniency); 4–6 letters allow 1 typo, longer allow 2.                                              |
 
 ## Components
 

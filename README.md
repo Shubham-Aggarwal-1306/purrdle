@@ -33,7 +33,7 @@ See [CLAUDE.md](./CLAUDE.md) for architecture and conventions.
 
 0. Scaffold ✅
 1. Core logic — level schema, answer matching, game state machine ✅
-2. Gameplay UI — theme, screens, bundled levels, MMKV persistence, haptics/sound
+2. Gameplay UI — theme, screens, bundled levels, MMKV persistence, haptics/sound ✅
 3. Public API + AI judge — `/judge` (mock + Jev stub), Upstash rate limiting/cache, App Check
 4. Ads + consent — UMP (incl. US state privacy messages), AdManager caps, rewarded/interstitial/banner (test IDs)
 5. Firebase — analytics, crashlytics, remote config
@@ -47,3 +47,4 @@ Architecture and decisions: [docs/architecture.md](./docs/architecture.md).
 
 Approved list lives in the project brief. Anything else needs sign-off first. Added in Phase 0 beyond the brief, as required peers/tooling:
 `expo-linking`, `expo-constants`, `react-native-safe-area-context`, `react-native-screens` (expo-router peers), `test-renderer` + `@react-native/jest-preset` (RNTL / jest-expo peers), `typescript-eslint`, `eslint-config-expo`, `eslint-config-prettier`, `ts-jest`.
+Phase 2: `react-native-worklets` (required by Reanimated 4), `react-native-nitro-modules` (required by MMKV 4), `expo-splash-screen` (holds the native splash until fonts load). `lottie-react-native` is approved but not installed yet — the placeholder mascot uses Reanimated; add Lottie with the final art.
