@@ -22,7 +22,8 @@ The app uses a **development build** (`expo-dev-client`), not Expo Go, because i
 ## Structure
 
 - `apps/mobile` — Expo / React Native app (expo-router)
-- `apps/api` — Fastify API (level packs, AI answer judge)
+- `apps/api` — Fastify API (AI answer judge; later content generation)
+- `apps/admin` — content admin SPA (later phase)
 - `packages/shared` — level schema, answer matching, game state machine (pure TS)
 - `docs/` — Play Store compliance tracking, privacy policy draft, app-ads.txt
 
@@ -33,10 +34,14 @@ See [CLAUDE.md](./CLAUDE.md) for architecture and conventions.
 0. Scaffold ✅
 1. Core logic — level schema, answer matching, game state machine
 2. Gameplay UI — theme, screens, bundled levels, MMKV persistence, haptics/sound
-3. API + AI judge — level packs, `/judge` (mock + Jev stub), rate limiting
-4. Ads + consent — UMP, AdManager caps, rewarded/interstitial/banner (test IDs)
+3. Public API + AI judge — `/judge` (mock + Jev stub), Upstash rate limiting/cache, App Check
+4. Ads + consent — UMP (incl. US state privacy messages), AdManager caps, rewarded/interstitial/banner (test IDs)
 5. Firebase — analytics, crashlytics, remote config
 6. Android release prep — EAS profiles, targetSdk 36, compliance docs
+7. Generation backend — Postgres + pgvector RAG, Claude drafts, Jev quality checks, pack publishing
+8. Admin app — Vite + React: word queue, generate/review/approve, pack versioning
+
+Architecture and decisions: [docs/architecture.md](./docs/architecture.md).
 
 ## Dependencies
 

@@ -5,13 +5,14 @@ Cat-themed, level-based word-guessing game. React Native (Expo dev build), ad-fu
 ## Layout
 
 ```
-apps/mobile      Expo SDK 57 app (expo-router, dev client — NOT Expo Go), TS strict
-apps/api         Fastify 5 API (Node 22, ESM): level packs + /judge (AI) — Phase 3
+apps/mobile      Expo SDK 57 player app (expo-router, dev client — NOT Expo Go), TS strict
+apps/api         Fastify 5 (Node 22, ESM). Two deployments: public (/judge only) and admin (generation)
+apps/admin       Vite + React admin SPA for content generation — added after release prep
 packages/shared  Pure TS: level schema (zod), answer matching, game state machine
-docs/            compliance.md, privacy policy, app-ads.txt, store notes
+docs/            architecture.md (decisions log), compliance.md, privacy policy, app-ads.txt
 ```
 
-Phase plan and product spec: see README.md → "Roadmap". Current phase: **0 (scaffold) done**.
+Phase plan: README.md → "Roadmap". Decisions (region, vendors, budget): `docs/architecture.md` — read it before infra work and append to its log when a decision changes. Budget is **near-free**: prefer free tiers and scale-to-zero.
 
 ## Commands (run from repo root)
 
@@ -33,6 +34,7 @@ Add mobile native deps with `npx expo install <pkg>` from `apps/mobile` (picks S
 - `@purrdle/shared` must stay **pure and platform-free**: no React, no RN, no Node built-ins, no I/O. Game state must be serializable (persisted via MMKV).
 - Business logic lives in `packages/shared` or app-level modules (`apps/mobile/src/features/*`, stores); components stay presentational.
 - Expo Router routes live in `apps/mobile/src/app/`. **Only route files there** — tests and helpers go elsewhere (`src/__tests__`, `src/components`, …) or they become routes. `@/*` aliases `apps/mobile/src/*`.
+- Content uses **US English**; UK / Indian English spellings go in `acceptedVariants`.
 - Theme tokens (colors/spacing/radii/typography) are centralized in one module (Phase 2) — no hard-coded colors in components.
 - Never call the AI provider (Jev) from the app. API keys live only in `apps/api/.env` / server secrets. `EXPO_PUBLIC_*` vars are bundled into the app — never secrets.
 - Ads: Google **test** ad unit IDs in all non-release builds; frequency capping lives only in `AdManager`.
