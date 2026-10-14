@@ -1,3 +1,5 @@
+export * from './level/schema.ts';
+
 export { compactForm, normalizeGuess } from './matching/normalize.ts';
 export { damerauLevenshtein } from './matching/damerau-levenshtein.ts';
 export {
