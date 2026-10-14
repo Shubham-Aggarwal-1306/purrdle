@@ -6,8 +6,10 @@ const target = (word: string, acceptedVariants: string[] = []): MatchTarget => (
 });
 
 describe('typoTolerance', () => {
-  it('allows 1 edit up to 6 letters and 2 beyond', () => {
-    expect(typoTolerance(3)).toBe(1);
+  it('requires exact answers up to 3 letters, then 1 edit up to 6 and 2 beyond', () => {
+    expect(typoTolerance(1)).toBe(0);
+    expect(typoTolerance(3)).toBe(0);
+    expect(typoTolerance(4)).toBe(1);
     expect(typoTolerance(6)).toBe(1);
     expect(typoTolerance(7)).toBe(2);
     expect(typoTolerance(15)).toBe(2);
@@ -80,6 +82,20 @@ describe('matchAnswer', () => {
     });
   });
 
+  describe('short answers (≤3 letters) must be exact', () => {
+    it.each(['bat', 'cot', 'ca', 'cta', 'caat'])('%j is wrong for "cat"', (guess) => {
+      expect(matchAnswer(guess, target('cat')).verdict).toBe('wrong');
+    });
+
+    it('still accepts listed variants and sends inflections to the judge', () => {
+      expect(matchAnswer('cats', target('cat', ['cats']))).toMatchObject({ exact: true });
+      expect(matchAnswer('cats', target('cat'))).toMatchObject({
+        verdict: 'borderline',
+        reason: 'inflection',
+      });
+    });
+  });
+
   describe('borderline', () => {
     it('flags a near miss just outside tolerance', () => {
       expect(matchAnswer('ktiten', target('kitten'))).toMatchObject({ verdict: 'correct' });
@@ -109,9 +125,11 @@ describe('matchAnswer', () => {
       });
     });
 
-    it('does not flag near misses that change too much of a short word', () => {
-      // "cat" → "dot": distance 2 = tolerance + 1, but ratio 2/3 > 0.4
-      expect(matchAnswer('dot', target('cat'))).toEqual({ verdict: 'wrong', distance: 2 });
+    it('does not flag near misses that change too much of the word', () => {
+      // "purr" → "pzzr": distance 2 = tolerance + 1, but 2/4 of the word changed (> 0.4) → wrong
+      expect(matchAnswer('pzzr', target('purr'))).toEqual({ verdict: 'wrong', distance: 2 });
+      // "purr" → "pa": distance 3 > 2 → wrong
+      expect(matchAnswer('pa', target('purr'))).toEqual({ verdict: 'wrong', distance: 3 });
     });
   });
 

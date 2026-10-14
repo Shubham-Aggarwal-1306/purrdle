@@ -3,6 +3,8 @@ import { looksLikeInflection } from './morphology.ts';
 import { compactForm } from './normalize.ts';
 
 export interface MatchOptions {
+  /** Answers with at most this many letters must be typed exactly (no typo or near-miss leniency). */
+  exactMatchMaxLength: number;
   /** Answers with at most this many letters use `shortWordTolerance`. */
   shortWordMaxLength: number;
   /** Max typo distance still accepted as correct for short answers. */
@@ -17,8 +19,9 @@ export interface MatchOptions {
   maxGuessLength: number;
 }
 
-/** Spec defaults: ≤1 typo for answers of ≤6 letters, ≤2 for longer ones. */
+/** Defaults: exact for ≤3 letters, ≤1 typo for 4–6 letters, ≤2 for longer answers. */
 export const DEFAULT_MATCH_OPTIONS: Readonly<MatchOptions> = Object.freeze({
+  exactMatchMaxLength: 3,
   shortWordMaxLength: 6,
   shortWordTolerance: 1,
   longWordTolerance: 2,
@@ -47,6 +50,7 @@ export function typoTolerance(
   answerLength: number,
   options: MatchOptions = DEFAULT_MATCH_OPTIONS,
 ): number {
+  if (answerLength <= options.exactMatchMaxLength) return 0;
   return answerLength <= options.shortWordMaxLength
     ? options.shortWordTolerance
     : options.longWordTolerance;
@@ -97,6 +101,7 @@ export function matchAnswer(
 
   const nearMiss = scored.find(
     (c) =>
+      c.length > options.exactMatchMaxLength &&
       c.distance <= c.tolerance + options.borderlineExtraDistance &&
       c.distance / Math.max(c.length, guessLength) <= options.borderlineMaxRatio,
   );
